@@ -1,0 +1,19 @@
+﻿@model Hashashins_CRM_Web.Models.Entity.CagrilarTablosu
+@{
+    ViewBag.Title = "CagriGetir";
+    Layout = "~/Views/Shared/FirmaLayout.cshtml";
+}
+
+<h2>Çağrı Düzenle</h2>
+<br />
+@using (Html.BeginForm("CagriDuzenle", "Default", FormMethod.Post))
+{
+    @Html.HiddenFor(x=>x.Cagri_ID)
+    @Html.Label("Konu")
+    @Html.TextBoxFor(x => x.Konu, new { @class = "form-control" })
+    <br />
+    @Html.Label("Açıklama")
+    @Html.TextAreaFor(x => x.Aciklama, 8, 4, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-success">Kaydet</button>
+}

@@ -1,0 +1,376 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0E0EEC5B-9E65-459D-9C4E-F07F1E24CB01}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Hashashins_CRM</RootNamespace>
+    <AssemblyName>Hashashins_CRM</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Charts.v20.1.Core, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.Desktop.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v20.1.Core, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v20.1.UI, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v20.1.UI, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v20.1.Wizard, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraEditors.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGrid.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entity\AdminTablosu.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\CagriDetaylariTablosu.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\CagrilarTablosu.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\DepartmanlarTablosu.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\FirmalarTablosu.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\GorevDetaylariTablosu.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\GorevlerTablosu.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\PersonelTablosu.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dashboard.Designer.cs">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formlar\AktifCagrilar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formlar\AktifCagrilar.Designer.cs">
+      <DependentUpon>AktifCagrilar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formlar\AktifGorevler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formlar\AktifGorevler.Designer.cs">
+      <DependentUpon>AktifGorevler.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formlar\AnaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formlar\AnaForm.Designer.cs">
+      <DependentUpon>AnaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formlar\CagriDetaylari.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formlar\CagriDetaylari.Designer.cs">
+      <DependentUpon>CagriDetaylari.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formlar\CagriEkle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formlar\CagriEkle.Designer.cs">
+      <DependentUpon>CagriEkle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formlar\CagriListesi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formlar\CagriListesi.Designer.cs">
+      <DependentUpon>CagriListesi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formlar\Cagriİstatistikleri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formlar\Cagriİstatistikleri.Designer.cs">
+      <DependentUpon>Cagriİstatistikleri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formlar\DepartmanEkle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formlar\DepartmanEkle.Designer.cs">
+      <DependentUpon>DepartmanEkle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formlar\Departmanlar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formlar\Departmanlar.Designer.cs">
+      <DependentUpon>Departmanlar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formlar\FirmaListesi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formlar\FirmaListesi.Designer.cs">
+      <DependentUpon>FirmaListesi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formlar\Firmaİstatistikleri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formlar\Firmaİstatistikleri.Designer.cs">
+      <DependentUpon>Firmaİstatistikleri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formlar\GorevDetaylari.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formlar\GorevDetaylari.Designer.cs">
+      <DependentUpon>GorevDetaylari.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formlar\GorevEkle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formlar\GorevEkle.Designer.cs">
+      <DependentUpon>GorevEkle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formlar\GorevListesi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formlar\GorevListesi.Designer.cs">
+      <DependentUpon>GorevListesi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formlar\Gorevİstatistikleri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formlar\Gorevİstatistikleri.Designer.cs">
+      <DependentUpon>Gorevİstatistikleri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formlar\Personelİstatistikleri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formlar\Personelİstatistikleri.Designer.cs">
+      <DependentUpon>Personelİstatistikleri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formlar\PersonelEkle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formlar\PersonelEkle.Designer.cs">
+      <DependentUpon>PersonelEkle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formlar\Personeller.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formlar\Personeller.Designer.cs">
+      <DependentUpon>Personeller.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formlar\TamamlananGorevler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formlar\TamamlananGorevler.Designer.cs">
+      <DependentUpon>TamamlananGorevler.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formlar\TamamlanmisCagrilar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formlar\TamamlanmisCagrilar.Designer.cs">
+      <DependentUpon>TamamlanmisCagrilar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formlar\YeniFirmaEkle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formlar\YeniFirmaEkle.Designer.cs">
+      <DependentUpon>YeniFirmaEkle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Giriş Formu\LoginFormu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Giriş Formu\LoginFormu.Designer.cs">
+      <DependentUpon>LoginFormu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoadingScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoadingScreen.Designer.cs">
+      <DependentUpon>LoadingScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Dashboard.resx">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formlar\AktifCagrilar.resx">
+      <DependentUpon>AktifCagrilar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formlar\AktifGorevler.resx">
+      <DependentUpon>AktifGorevler.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formlar\AnaForm.resx">
+      <DependentUpon>AnaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formlar\CagriDetaylari.resx">
+      <DependentUpon>CagriDetaylari.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formlar\CagriEkle.resx">
+      <DependentUpon>CagriEkle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formlar\CagriListesi.resx">
+      <DependentUpon>CagriListesi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formlar\Cagriİstatistikleri.resx">
+      <DependentUpon>Cagriİstatistikleri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formlar\DepartmanEkle.resx">
+      <DependentUpon>DepartmanEkle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formlar\Departmanlar.resx">
+      <DependentUpon>Departmanlar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formlar\FirmaListesi.resx">
+      <DependentUpon>FirmaListesi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formlar\Firmaİstatistikleri.resx">
+      <DependentUpon>Firmaİstatistikleri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formlar\GorevDetaylari.resx">
+      <DependentUpon>GorevDetaylari.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formlar\GorevEkle.resx">
+      <DependentUpon>GorevEkle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formlar\GorevListesi.resx">
+      <DependentUpon>GorevListesi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formlar\Gorevİstatistikleri.resx">
+      <DependentUpon>Gorevİstatistikleri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formlar\Personelİstatistikleri.resx">
+      <DependentUpon>Personelİstatistikleri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formlar\PersonelEkle.resx">
+      <DependentUpon>PersonelEkle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formlar\Personeller.resx">
+      <DependentUpon>Personeller.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formlar\TamamlananGorevler.resx">
+      <DependentUpon>TamamlananGorevler.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formlar\TamamlanmisCagrilar.resx">
+      <DependentUpon>TamamlanmisCagrilar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formlar\YeniFirmaEkle.resx">
+      <DependentUpon>YeniFirmaEkle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Giriş Formu\LoginFormu.resx">
+      <DependentUpon>LoginFormu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoadingScreen.resx">
+      <DependentUpon>LoadingScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EntityDeploy Include="Entity\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Entity\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Entity\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Entity\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

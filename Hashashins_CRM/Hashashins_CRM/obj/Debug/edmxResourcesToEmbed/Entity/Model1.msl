@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HashashinsDbModelStoreContainer" CdmEntityContainer="HashashinsDbEntities">
+    <EntitySetMapping Name="DepartmanlarTablosu">
+      <EntityTypeMapping TypeName="HashashinsDbModel.DepartmanlarTablosu">
+        <MappingFragment StoreEntitySet="DepartmanlarTablosu">
+          <ScalarProperty Name="Departman_ID" ColumnName="Departman_ID" />
+          <ScalarProperty Name="Departman_Adi" ColumnName="Departman_Adi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FirmalarTablosu">
+      <EntityTypeMapping TypeName="HashashinsDbModel.FirmalarTablosu">
+        <MappingFragment StoreEntitySet="FirmalarTablosu">
+          <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+          <ScalarProperty Name="Firma_ID" ColumnName="Firma_ID" />
+          <ScalarProperty Name="Firma_Adi" ColumnName="Firma_Adi" />
+          <ScalarProperty Name="Yetkili_Adi" ColumnName="Yetkili_Adi" />
+          <ScalarProperty Name="Telefon_No" ColumnName="Telefon_No" />
+          <ScalarProperty Name="Mail_Adresi" ColumnName="Mail_Adresi" />
+          <ScalarProperty Name="Firma_İl" ColumnName="Firma_İl" />
+          <ScalarProperty Name="Firma_İlce" ColumnName="Firma_İlce" />
+          <ScalarProperty Name="Firma_Adresi" ColumnName="Firma_Adresi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GorevDetaylariTablosu">
+      <EntityTypeMapping TypeName="HashashinsDbModel.GorevDetaylariTablosu">
+        <MappingFragment StoreEntitySet="GorevDetaylariTablosu">
+          <ScalarProperty Name="GorevDetaylar_ID" ColumnName="GorevDetaylar_ID" />
+          <ScalarProperty Name="Gorev" ColumnName="Gorev" />
+          <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+          <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+          <ScalarProperty Name="Saat" ColumnName="Saat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GorevlerTablosu">
+      <EntityTypeMapping TypeName="HashashinsDbModel.GorevlerTablosu">
+        <MappingFragment StoreEntitySet="GorevlerTablosu">
+          <ScalarProperty Name="Gorev_ID" ColumnName="Gorev_ID" />
+          <ScalarProperty Name="GorevVeren" ColumnName="GorevVeren" />
+          <ScalarProperty Name="GorevAlan" ColumnName="GorevAlan" />
+          <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+          <ScalarProperty Name="Durum" ColumnName="Durum" />
+          <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PersonelTablosu">
+      <EntityTypeMapping TypeName="HashashinsDbModel.PersonelTablosu">
+        <MappingFragment StoreEntitySet="PersonelTablosu">
+          <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+          <ScalarProperty Name="Durum" ColumnName="Durum" />
+          <ScalarProperty Name="Personel_ID" ColumnName="Personel_ID" />
+          <ScalarProperty Name="Personel_Adi" ColumnName="Personel_Adi" />
+          <ScalarProperty Name="Personel_Soyadi" ColumnName="Personel_Soyadi" />
+          <ScalarProperty Name="Mail_Adresi" ColumnName="Mail_Adresi" />
+          <ScalarProperty Name="Telefon_No" ColumnName="Telefon_No" />
+          <ScalarProperty Name="Departman" ColumnName="Departman" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AdminTablosu">
+      <EntityTypeMapping TypeName="HashashinsDbModel.AdminTablosu">
+        <MappingFragment StoreEntitySet="AdminTablosu">
+          <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+          <ScalarProperty Name="Kullanici_Adi" ColumnName="Kullanici_Adi" />
+          <ScalarProperty Name="Admin_ID" ColumnName="Admin_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CagrilarTablosu">
+      <EntityTypeMapping TypeName="HashashinsDbModel.CagrilarTablosu">
+        <MappingFragment StoreEntitySet="CagrilarTablosu">
+          <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+          <ScalarProperty Name="Durum" ColumnName="Durum" />
+          <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+          <ScalarProperty Name="Konu" ColumnName="Konu" />
+          <ScalarProperty Name="Cagri_Firmasi" ColumnName="Cagri_Firmasi" />
+          <ScalarProperty Name="Cagri_ID" ColumnName="Cagri_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CagriDetaylariTablosu">
+      <EntityTypeMapping TypeName="HashashinsDbModel.CagriDetaylariTablosu">
+        <MappingFragment StoreEntitySet="CagriDetaylariTablosu">
+          <ScalarProperty Name="Saat" ColumnName="Saat" />
+          <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+          <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+          <ScalarProperty Name="Cagri_ID" ColumnName="Cagri_ID" />
+          <ScalarProperty Name="CagriDetay_ID" ColumnName="CagriDetay_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

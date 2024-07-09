@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fd2b1787b368458eb29aead227cbfb54" Name="Diagram1">
+        <EntityTypeShape EntityType="HashashinsDbModel.DepartmanlarTablosu" Width="1.5" PointX="0.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="HashashinsDbModel.FirmalarTablosu" Width="1.5" PointX="0.5" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HashashinsDbModel.GorevDetaylariTablosu" Width="1.5" PointX="5.875" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="HashashinsDbModel.GorevlerTablosu" Width="1.5" PointX="4.125" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="HashashinsDbModel.PersonelTablosu" Width="1.5" PointX="2.375" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="HashashinsDbModel.FK_PersonelTablosu_DepartmanlarTablosu" ManuallyRouted="false" />
+        <AssociationConnector Association="HashashinsDbModel.FK_GorevDetaylariTablosu_GorevlerTablosu" ManuallyRouted="false" />
+        <AssociationConnector Association="HashashinsDbModel.FK_GorevlerTablosu_PersonelTablosu" ManuallyRouted="false" />
+        <AssociationConnector Association="HashashinsDbModel.FK_GorevlerTablosu_PersonelTablosu1" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="HashashinsDbModel.AdminTablosu" Width="1.5" PointX="7.5" PointY="1" />
+        <EntityTypeShape EntityType="HashashinsDbModel.CagrilarTablosu" Width="1.5" PointX="2.375" PointY="4.375" />
+        <AssociationConnector Association="HashashinsDbModel.FK_CagrilarTablosu_FirmalarTablosu" />
+        <EntityTypeShape EntityType="HashashinsDbModel.CagriDetaylariTablosu" Width="1.5" PointX="4.375" PointY="4.375" />
+        <AssociationConnector Association="HashashinsDbModel.FK_CagriDetaylariTablosu_CagrilarTablosu" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

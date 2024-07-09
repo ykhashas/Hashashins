@@ -1,0 +1,525 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HashashinsDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AdminTablosu">
+          <Key>
+            <PropertyRef Name="Admin_ID" />
+          </Key>
+          <Property Name="Admin_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kullanici_Adi" Type="nvarchar" MaxLength="20" />
+          <Property Name="Sifre" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="CagriDetaylariTablosu">
+          <Key>
+            <PropertyRef Name="CagriDetay_ID" />
+          </Key>
+          <Property Name="CagriDetay_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cagri_ID" Type="int" />
+          <Property Name="Aciklama" Type="nvarchar" MaxLength="250" />
+          <Property Name="Tarih" Type="date" />
+          <Property Name="Saat" Type="char" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="CagrilarTablosu">
+          <Key>
+            <PropertyRef Name="Cagri_ID" />
+          </Key>
+          <Property Name="Cagri_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cagri_Firmasi" Type="int" />
+          <Property Name="Konu" Type="nvarchar" MaxLength="50" />
+          <Property Name="Aciklama" Type="nvarchar(max)" />
+          <Property Name="Durum" Type="bit" />
+          <Property Name="Tarih" Type="date" />
+        </EntityType>
+        <EntityType Name="DepartmanlarTablosu">
+          <Key>
+            <PropertyRef Name="Departman_ID" />
+          </Key>
+          <Property Name="Departman_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Departman_Adi" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="FirmalarTablosu">
+          <Key>
+            <PropertyRef Name="Firma_ID" />
+          </Key>
+          <Property Name="Firma_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Firma_Adi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Yetkili_Adi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telefon_No" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mail_Adresi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sifre" Type="nvarchar" MaxLength="50" />
+          <Property Name="Firma_İl" Type="nvarchar" MaxLength="50" />
+          <Property Name="Firma_İlce" Type="nvarchar" MaxLength="50" />
+          <Property Name="Firma_Adresi" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="GorevDetaylariTablosu">
+          <Key>
+            <PropertyRef Name="GorevDetaylar_ID" />
+          </Key>
+          <Property Name="GorevDetaylar_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Gorev" Type="int" />
+          <Property Name="Aciklama" Type="nvarchar" MaxLength="500" />
+          <Property Name="Tarih" Type="date" />
+          <Property Name="Saat" Type="char" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="GorevlerTablosu">
+          <Key>
+            <PropertyRef Name="Gorev_ID" />
+          </Key>
+          <Property Name="Gorev_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GorevVeren" Type="int" />
+          <Property Name="GorevAlan" Type="int" />
+          <Property Name="Aciklama" Type="nvarchar" MaxLength="500" />
+          <Property Name="Durum" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tarih" Type="date" />
+        </EntityType>
+        <EntityType Name="PersonelTablosu">
+          <Key>
+            <PropertyRef Name="Personel_ID" />
+          </Key>
+          <Property Name="Personel_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Personel_Adi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Personel_Soyadi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mail_Adresi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telefon_No" Type="nvarchar" MaxLength="50" />
+          <Property Name="Departman" Type="int" />
+          <Property Name="Durum" Type="bit" />
+          <Property Name="Sifre" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_CagriDetaylariTablosu_CagrilarTablosu">
+          <End Role="CagrilarTablosu" Type="Self.CagrilarTablosu" Multiplicity="0..1" />
+          <End Role="CagriDetaylariTablosu" Type="Self.CagriDetaylariTablosu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CagrilarTablosu">
+              <PropertyRef Name="Cagri_ID" />
+            </Principal>
+            <Dependent Role="CagriDetaylariTablosu">
+              <PropertyRef Name="Cagri_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CagrilarTablosu_FirmalarTablosu">
+          <End Role="FirmalarTablosu" Type="Self.FirmalarTablosu" Multiplicity="0..1" />
+          <End Role="CagrilarTablosu" Type="Self.CagrilarTablosu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FirmalarTablosu">
+              <PropertyRef Name="Firma_ID" />
+            </Principal>
+            <Dependent Role="CagrilarTablosu">
+              <PropertyRef Name="Cagri_Firmasi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GorevDetaylariTablosu_GorevlerTablosu">
+          <End Role="GorevlerTablosu" Type="Self.GorevlerTablosu" Multiplicity="0..1" />
+          <End Role="GorevDetaylariTablosu" Type="Self.GorevDetaylariTablosu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GorevlerTablosu">
+              <PropertyRef Name="Gorev_ID" />
+            </Principal>
+            <Dependent Role="GorevDetaylariTablosu">
+              <PropertyRef Name="Gorev" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GorevlerTablosu_PersonelTablosu">
+          <End Role="PersonelTablosu" Type="Self.PersonelTablosu" Multiplicity="0..1" />
+          <End Role="GorevlerTablosu" Type="Self.GorevlerTablosu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PersonelTablosu">
+              <PropertyRef Name="Personel_ID" />
+            </Principal>
+            <Dependent Role="GorevlerTablosu">
+              <PropertyRef Name="GorevVeren" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GorevlerTablosu_PersonelTablosu1">
+          <End Role="PersonelTablosu" Type="Self.PersonelTablosu" Multiplicity="0..1" />
+          <End Role="GorevlerTablosu" Type="Self.GorevlerTablosu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PersonelTablosu">
+              <PropertyRef Name="Personel_ID" />
+            </Principal>
+            <Dependent Role="GorevlerTablosu">
+              <PropertyRef Name="GorevAlan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonelTablosu_DepartmanlarTablosu">
+          <End Role="DepartmanlarTablosu" Type="Self.DepartmanlarTablosu" Multiplicity="0..1" />
+          <End Role="PersonelTablosu" Type="Self.PersonelTablosu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DepartmanlarTablosu">
+              <PropertyRef Name="Departman_ID" />
+            </Principal>
+            <Dependent Role="PersonelTablosu">
+              <PropertyRef Name="Departman" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HashashinsDbModelStoreContainer">
+          <EntitySet Name="AdminTablosu" EntityType="Self.AdminTablosu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CagriDetaylariTablosu" EntityType="Self.CagriDetaylariTablosu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CagrilarTablosu" EntityType="Self.CagrilarTablosu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DepartmanlarTablosu" EntityType="Self.DepartmanlarTablosu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FirmalarTablosu" EntityType="Self.FirmalarTablosu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GorevDetaylariTablosu" EntityType="Self.GorevDetaylariTablosu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GorevlerTablosu" EntityType="Self.GorevlerTablosu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonelTablosu" EntityType="Self.PersonelTablosu" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CagriDetaylariTablosu_CagrilarTablosu" Association="Self.FK_CagriDetaylariTablosu_CagrilarTablosu">
+            <End Role="CagrilarTablosu" EntitySet="CagrilarTablosu" />
+            <End Role="CagriDetaylariTablosu" EntitySet="CagriDetaylariTablosu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CagrilarTablosu_FirmalarTablosu" Association="Self.FK_CagrilarTablosu_FirmalarTablosu">
+            <End Role="FirmalarTablosu" EntitySet="FirmalarTablosu" />
+            <End Role="CagrilarTablosu" EntitySet="CagrilarTablosu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GorevDetaylariTablosu_GorevlerTablosu" Association="Self.FK_GorevDetaylariTablosu_GorevlerTablosu">
+            <End Role="GorevlerTablosu" EntitySet="GorevlerTablosu" />
+            <End Role="GorevDetaylariTablosu" EntitySet="GorevDetaylariTablosu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GorevlerTablosu_PersonelTablosu" Association="Self.FK_GorevlerTablosu_PersonelTablosu">
+            <End Role="PersonelTablosu" EntitySet="PersonelTablosu" />
+            <End Role="GorevlerTablosu" EntitySet="GorevlerTablosu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GorevlerTablosu_PersonelTablosu1" Association="Self.FK_GorevlerTablosu_PersonelTablosu1">
+            <End Role="PersonelTablosu" EntitySet="PersonelTablosu" />
+            <End Role="GorevlerTablosu" EntitySet="GorevlerTablosu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonelTablosu_DepartmanlarTablosu" Association="Self.FK_PersonelTablosu_DepartmanlarTablosu">
+            <End Role="DepartmanlarTablosu" EntitySet="DepartmanlarTablosu" />
+            <End Role="PersonelTablosu" EntitySet="PersonelTablosu" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HashashinsDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DepartmanlarTablosu">
+          <Key>
+            <PropertyRef Name="Departman_ID" />
+          </Key>
+          <Property Name="Departman_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Departman_Adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PersonelTablosu" Relationship="Self.FK_PersonelTablosu_DepartmanlarTablosu" FromRole="DepartmanlarTablosu" ToRole="PersonelTablosu" />
+        </EntityType>
+        <EntityType Name="FirmalarTablosu">
+          <Key>
+            <PropertyRef Name="Firma_ID" />
+          </Key>
+          <Property Name="Firma_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Firma_Adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Yetkili_Adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telefon_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mail_Adresi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Firma_İl" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Firma_İlce" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Firma_Adresi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CagrilarTablosu" Relationship="HashashinsDbModel.FK_CagrilarTablosu_FirmalarTablosu" FromRole="FirmalarTablosu" ToRole="CagrilarTablosu" />
+          <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="GorevDetaylariTablosu">
+          <Key>
+            <PropertyRef Name="GorevDetaylar_ID" />
+          </Key>
+          <Property Name="GorevDetaylar_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Gorev" Type="Int32" />
+          <Property Name="Aciklama" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Tarih" Type="DateTime" Precision="0" />
+          <Property Name="Saat" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="GorevlerTablosu" Relationship="Self.FK_GorevDetaylariTablosu_GorevlerTablosu" FromRole="GorevDetaylariTablosu" ToRole="GorevlerTablosu" />
+        </EntityType>
+        <EntityType Name="GorevlerTablosu">
+          <Key>
+            <PropertyRef Name="Gorev_ID" />
+          </Key>
+          <Property Name="Gorev_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GorevVeren" Type="Int32" />
+          <Property Name="GorevAlan" Type="Int32" />
+          <Property Name="Aciklama" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Durum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tarih" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="GorevDetaylariTablosu" Relationship="Self.FK_GorevDetaylariTablosu_GorevlerTablosu" FromRole="GorevlerTablosu" ToRole="GorevDetaylariTablosu" />
+          <NavigationProperty Name="PersonelTablosu" Relationship="Self.FK_GorevlerTablosu_PersonelTablosu" FromRole="GorevlerTablosu" ToRole="PersonelTablosu" />
+          <NavigationProperty Name="PersonelTablosu1" Relationship="Self.FK_GorevlerTablosu_PersonelTablosu1" FromRole="GorevlerTablosu" ToRole="PersonelTablosu" />
+        </EntityType>
+        <EntityType Name="PersonelTablosu">
+          <Key>
+            <PropertyRef Name="Personel_ID" />
+          </Key>
+          <Property Name="Personel_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Personel_Adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Personel_Soyadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mail_Adresi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telefon_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Departman" Type="Int32" />
+          <NavigationProperty Name="DepartmanlarTablosu" Relationship="Self.FK_PersonelTablosu_DepartmanlarTablosu" FromRole="PersonelTablosu" ToRole="DepartmanlarTablosu" />
+          <NavigationProperty Name="GorevlerTablosu" Relationship="Self.FK_GorevlerTablosu_PersonelTablosu" FromRole="PersonelTablosu" ToRole="GorevlerTablosu" />
+          <NavigationProperty Name="GorevlerTablosu1" Relationship="Self.FK_GorevlerTablosu_PersonelTablosu1" FromRole="PersonelTablosu" ToRole="GorevlerTablosu" />
+          <Property Name="Durum" Type="Boolean" />
+          <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_PersonelTablosu_DepartmanlarTablosu">
+          <End Role="DepartmanlarTablosu" Type="Self.DepartmanlarTablosu" Multiplicity="0..1" />
+          <End Role="PersonelTablosu" Type="Self.PersonelTablosu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DepartmanlarTablosu">
+              <PropertyRef Name="Departman_ID" />
+            </Principal>
+            <Dependent Role="PersonelTablosu">
+              <PropertyRef Name="Departman" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GorevDetaylariTablosu_GorevlerTablosu">
+          <End Role="GorevlerTablosu" Type="Self.GorevlerTablosu" Multiplicity="0..1" />
+          <End Role="GorevDetaylariTablosu" Type="Self.GorevDetaylariTablosu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GorevlerTablosu">
+              <PropertyRef Name="Gorev_ID" />
+            </Principal>
+            <Dependent Role="GorevDetaylariTablosu">
+              <PropertyRef Name="Gorev" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GorevlerTablosu_PersonelTablosu">
+          <End Role="PersonelTablosu" Type="Self.PersonelTablosu" Multiplicity="0..1" />
+          <End Role="GorevlerTablosu" Type="Self.GorevlerTablosu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PersonelTablosu">
+              <PropertyRef Name="Personel_ID" />
+            </Principal>
+            <Dependent Role="GorevlerTablosu">
+              <PropertyRef Name="GorevVeren" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GorevlerTablosu_PersonelTablosu1">
+          <End Role="PersonelTablosu" Type="Self.PersonelTablosu" Multiplicity="0..1" />
+          <End Role="GorevlerTablosu" Type="Self.GorevlerTablosu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PersonelTablosu">
+              <PropertyRef Name="Personel_ID" />
+            </Principal>
+            <Dependent Role="GorevlerTablosu">
+              <PropertyRef Name="GorevAlan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HashashinsDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DepartmanlarTablosu" EntityType="Self.DepartmanlarTablosu" />
+          <EntitySet Name="FirmalarTablosu" EntityType="Self.FirmalarTablosu" />
+          <EntitySet Name="GorevDetaylariTablosu" EntityType="Self.GorevDetaylariTablosu" />
+          <EntitySet Name="GorevlerTablosu" EntityType="Self.GorevlerTablosu" />
+          <EntitySet Name="PersonelTablosu" EntityType="Self.PersonelTablosu" />
+          <AssociationSet Name="FK_PersonelTablosu_DepartmanlarTablosu" Association="Self.FK_PersonelTablosu_DepartmanlarTablosu">
+            <End Role="DepartmanlarTablosu" EntitySet="DepartmanlarTablosu" />
+            <End Role="PersonelTablosu" EntitySet="PersonelTablosu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GorevDetaylariTablosu_GorevlerTablosu" Association="Self.FK_GorevDetaylariTablosu_GorevlerTablosu">
+            <End Role="GorevlerTablosu" EntitySet="GorevlerTablosu" />
+            <End Role="GorevDetaylariTablosu" EntitySet="GorevDetaylariTablosu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GorevlerTablosu_PersonelTablosu" Association="Self.FK_GorevlerTablosu_PersonelTablosu">
+            <End Role="PersonelTablosu" EntitySet="PersonelTablosu" />
+            <End Role="GorevlerTablosu" EntitySet="GorevlerTablosu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GorevlerTablosu_PersonelTablosu1" Association="Self.FK_GorevlerTablosu_PersonelTablosu1">
+            <End Role="PersonelTablosu" EntitySet="PersonelTablosu" />
+            <End Role="GorevlerTablosu" EntitySet="GorevlerTablosu" />
+          </AssociationSet>
+          <EntitySet Name="AdminTablosu" EntityType="HashashinsDbModel.AdminTablosu" />
+          <EntitySet Name="CagrilarTablosu" EntityType="HashashinsDbModel.CagrilarTablosu" />
+          <AssociationSet Name="FK_CagrilarTablosu_FirmalarTablosu" Association="HashashinsDbModel.FK_CagrilarTablosu_FirmalarTablosu">
+            <End Role="FirmalarTablosu" EntitySet="FirmalarTablosu" />
+            <End Role="CagrilarTablosu" EntitySet="CagrilarTablosu" />
+          </AssociationSet>
+          <EntitySet Name="CagriDetaylariTablosu" EntityType="HashashinsDbModel.CagriDetaylariTablosu" />
+          <AssociationSet Name="FK_CagriDetaylariTablosu_CagrilarTablosu" Association="HashashinsDbModel.FK_CagriDetaylariTablosu_CagrilarTablosu">
+            <End Role="CagrilarTablosu" EntitySet="CagrilarTablosu" />
+            <End Role="CagriDetaylariTablosu" EntitySet="CagriDetaylariTablosu" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AdminTablosu">
+          <Key>
+            <PropertyRef Name="Admin_ID" />
+          </Key>
+          <Property Name="Admin_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kullanici_Adi" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Sifre" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CagrilarTablosu">
+          <Key>
+            <PropertyRef Name="Cagri_ID" />
+          </Key>
+          <Property Name="Cagri_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cagri_Firmasi" Type="Int32" />
+          <Property Name="Konu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Durum" Type="Boolean" />
+          <Property Name="Tarih" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="FirmalarTablosu" Relationship="HashashinsDbModel.FK_CagrilarTablosu_FirmalarTablosu" FromRole="CagrilarTablosu" ToRole="FirmalarTablosu" />
+          <NavigationProperty Name="CagriDetaylariTablosu" Relationship="HashashinsDbModel.FK_CagriDetaylariTablosu_CagrilarTablosu" FromRole="CagrilarTablosu" ToRole="CagriDetaylariTablosu" />
+        </EntityType>
+        <Association Name="FK_CagrilarTablosu_FirmalarTablosu">
+          <End Type="HashashinsDbModel.FirmalarTablosu" Role="FirmalarTablosu" Multiplicity="0..1" />
+          <End Type="HashashinsDbModel.CagrilarTablosu" Role="CagrilarTablosu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FirmalarTablosu">
+              <PropertyRef Name="Firma_ID" />
+            </Principal>
+            <Dependent Role="CagrilarTablosu">
+              <PropertyRef Name="Cagri_Firmasi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CagriDetaylariTablosu">
+          <Key>
+            <PropertyRef Name="CagriDetay_ID" />
+          </Key>
+          <Property Name="CagriDetay_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cagri_ID" Type="Int32" />
+          <Property Name="Aciklama" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Tarih" Type="DateTime" Precision="0" />
+          <Property Name="Saat" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="CagrilarTablosu" Relationship="HashashinsDbModel.FK_CagriDetaylariTablosu_CagrilarTablosu" FromRole="CagriDetaylariTablosu" ToRole="CagrilarTablosu" />
+        </EntityType>
+        <Association Name="FK_CagriDetaylariTablosu_CagrilarTablosu">
+          <End Type="HashashinsDbModel.CagrilarTablosu" Role="CagrilarTablosu" Multiplicity="0..1" />
+          <End Type="HashashinsDbModel.CagriDetaylariTablosu" Role="CagriDetaylariTablosu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CagrilarTablosu">
+              <PropertyRef Name="Cagri_ID" />
+            </Principal>
+            <Dependent Role="CagriDetaylariTablosu">
+              <PropertyRef Name="Cagri_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HashashinsDbModelStoreContainer" CdmEntityContainer="HashashinsDbEntities">
+          <EntitySetMapping Name="DepartmanlarTablosu">
+            <EntityTypeMapping TypeName="HashashinsDbModel.DepartmanlarTablosu">
+              <MappingFragment StoreEntitySet="DepartmanlarTablosu">
+                <ScalarProperty Name="Departman_ID" ColumnName="Departman_ID" />
+                <ScalarProperty Name="Departman_Adi" ColumnName="Departman_Adi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FirmalarTablosu">
+            <EntityTypeMapping TypeName="HashashinsDbModel.FirmalarTablosu">
+              <MappingFragment StoreEntitySet="FirmalarTablosu">
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+                <ScalarProperty Name="Firma_ID" ColumnName="Firma_ID" />
+                <ScalarProperty Name="Firma_Adi" ColumnName="Firma_Adi" />
+                <ScalarProperty Name="Yetkili_Adi" ColumnName="Yetkili_Adi" />
+                <ScalarProperty Name="Telefon_No" ColumnName="Telefon_No" />
+                <ScalarProperty Name="Mail_Adresi" ColumnName="Mail_Adresi" />
+                <ScalarProperty Name="Firma_İl" ColumnName="Firma_İl" />
+                <ScalarProperty Name="Firma_İlce" ColumnName="Firma_İlce" />
+                <ScalarProperty Name="Firma_Adresi" ColumnName="Firma_Adresi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GorevDetaylariTablosu">
+            <EntityTypeMapping TypeName="HashashinsDbModel.GorevDetaylariTablosu">
+              <MappingFragment StoreEntitySet="GorevDetaylariTablosu">
+                <ScalarProperty Name="GorevDetaylar_ID" ColumnName="GorevDetaylar_ID" />
+                <ScalarProperty Name="Gorev" ColumnName="Gorev" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="Saat" ColumnName="Saat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GorevlerTablosu">
+            <EntityTypeMapping TypeName="HashashinsDbModel.GorevlerTablosu">
+              <MappingFragment StoreEntitySet="GorevlerTablosu">
+                <ScalarProperty Name="Gorev_ID" ColumnName="Gorev_ID" />
+                <ScalarProperty Name="GorevVeren" ColumnName="GorevVeren" />
+                <ScalarProperty Name="GorevAlan" ColumnName="GorevAlan" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="Durum" ColumnName="Durum" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonelTablosu">
+            <EntityTypeMapping TypeName="HashashinsDbModel.PersonelTablosu">
+              <MappingFragment StoreEntitySet="PersonelTablosu">
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+                <ScalarProperty Name="Durum" ColumnName="Durum" />
+                <ScalarProperty Name="Personel_ID" ColumnName="Personel_ID" />
+                <ScalarProperty Name="Personel_Adi" ColumnName="Personel_Adi" />
+                <ScalarProperty Name="Personel_Soyadi" ColumnName="Personel_Soyadi" />
+                <ScalarProperty Name="Mail_Adresi" ColumnName="Mail_Adresi" />
+                <ScalarProperty Name="Telefon_No" ColumnName="Telefon_No" />
+                <ScalarProperty Name="Departman" ColumnName="Departman" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdminTablosu">
+            <EntityTypeMapping TypeName="HashashinsDbModel.AdminTablosu">
+              <MappingFragment StoreEntitySet="AdminTablosu">
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+                <ScalarProperty Name="Kullanici_Adi" ColumnName="Kullanici_Adi" />
+                <ScalarProperty Name="Admin_ID" ColumnName="Admin_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CagrilarTablosu">
+            <EntityTypeMapping TypeName="HashashinsDbModel.CagrilarTablosu">
+              <MappingFragment StoreEntitySet="CagrilarTablosu">
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="Durum" ColumnName="Durum" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="Konu" ColumnName="Konu" />
+                <ScalarProperty Name="Cagri_Firmasi" ColumnName="Cagri_Firmasi" />
+                <ScalarProperty Name="Cagri_ID" ColumnName="Cagri_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CagriDetaylariTablosu">
+            <EntityTypeMapping TypeName="HashashinsDbModel.CagriDetaylariTablosu">
+              <MappingFragment StoreEntitySet="CagriDetaylariTablosu">
+                <ScalarProperty Name="Saat" ColumnName="Saat" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="Cagri_ID" ColumnName="Cagri_ID" />
+                <ScalarProperty Name="CagriDetay_ID" ColumnName="CagriDetay_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
